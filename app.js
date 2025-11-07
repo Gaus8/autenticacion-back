@@ -1,5 +1,6 @@
 import  express from 'express'  
 import cors from 'cors'
+import 'dotenv/config'
 
 import {routerRegistro} from './registrarUsuario.js';
 import { routerLogin } from './verificarUsuario.js';
@@ -13,7 +14,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }))
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 2000
 
 app.get('/', (req, res) =>{
   res.send("El servidor está funcionando")
