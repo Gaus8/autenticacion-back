@@ -5,7 +5,7 @@ import { authAdmin, db } from "./connection.js"; // db = Firestore
 
 export const routerRegistro = express.Router();
 
-routerRegistro.post("/registro", async (req, res) => {
+routerRegistro.post("/registro-email", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ message: "Faltan datos" });
 
@@ -19,11 +19,9 @@ routerRegistro.post("/registro", async (req, res) => {
       creadoEn: new Date(),
       rol: "admin"
     });
-
-    console.log("Usuario creado:", userRecord.uid);
-    res.status(201).json({ uid: userRecord.uid, message: "Usuario registrado" });
+    res.status(201).json({ uid: userRecord.uid, ok:true });
   } catch (err) {
-    console.error("Error en /registro:", err.code, err.message);
+    console.error("Error en /registro-email:", err.code, err.message);
 
     // Retornar error específico al frontend
     switch (err.code) {
@@ -43,7 +41,7 @@ routerRegistro.post("/registro", async (req, res) => {
 });
 
 
-routerRegistro.post("/registrar-admin", async (req, res) => {
+routerRegistro.post("/registro-google", async (req, res) => {
   const token = req.headers.authorization?.split("Bearer ")[1];
   if (!token) return res.status(401).send({ error: "Token requerido" });
 
@@ -58,7 +56,6 @@ routerRegistro.post("/registrar-admin", async (req, res) => {
 
     res.status(201).json({ message: "Usuario registrado" })
   } catch (error) {
-    console.error(error);
     res.status(401).json({ message: "Token inválido" })
   }
 });
