@@ -13,8 +13,7 @@ app.use(cors({
     "http://localhost:5173",
     "https://autenticacion-firebase.onrender.com"
   ],
-
-  methods:['POST','GET'],
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }))
 
