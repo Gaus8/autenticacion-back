@@ -21,8 +21,6 @@ routerRegistro.post("/registro-email", async (req, res) => {
     });
     res.status(201).json({ uid: userRecord.uid, ok:true });
   } catch (err) {
-    console.error("Error en /registro-email:", err.code, err.message);
-
     // Retornar error específico al frontend
     switch (err.code) {
       case "auth/invalid-password":
