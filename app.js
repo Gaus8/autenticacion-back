@@ -5,7 +5,7 @@ import 'dotenv/config'
 import {routerRegistro} from './registrarUsuario.js';
 import { routerLogin } from './verificarUsuario.js';
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 app.use(cors({
@@ -28,6 +28,6 @@ app.use("/api",routerRegistro);
 //Endpoint verificar usuario
 app.use('/api', routerLogin)
 
-app.listen(PORT, ( ) =>{
-  console.log(`server listening on http://localhost:${PORT}`)
-})
+// app.listen(PORT, ( ) =>{
+//   console.log(`server listening on http://localhost:${PORT}`)
+// })
